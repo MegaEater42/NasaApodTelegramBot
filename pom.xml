@@ -11,6 +11,7 @@
 
     <modules>
         <module>config-server</module>
+        <module>eureka-discovery-server</module>
     </modules>
 
     <properties>
