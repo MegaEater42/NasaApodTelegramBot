@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+        id: "add-fk-for-table-users-states-on-column-user-id-referenced-table-users"
+        author: "megaeater42"
+        objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+        changes:
+            - addForeignKeyConstraint:
+                  baseColumnNames: user_id
+                  baseTableName: users_states
+                  constraintName: FK_USERS_STATES_ON_USER
+                  referencedColumnNames: id
+                  referencedTableName: users

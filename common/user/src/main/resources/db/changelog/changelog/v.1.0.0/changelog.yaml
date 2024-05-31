@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - changeSet:
+      id: "tag-v.1.0.0"
+      author: "megaeater42"
+  - includeAll:
+      path: "/changeset"
+      relativeToChangelogFile: true

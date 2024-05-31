@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - changeSet:
+      id: "create-table-users"
+      author: "megaeater42"
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_users
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: user_name
+                  type: VARCHAR(255)
+              - column:
+                  name: first_name
+                  type: VARCHAR(255)
+              - column:
+                  name: last_name
+                  type: VARCHAR(255)
+              - column:
+                  name: user_state_id
+                  type: BIGINT
+              - column:
+                  name: nasa_api_key
+                  type: VARCHAR(255)
+            tableName: users
+  - changeSet:
+      id: "add-uc-for-table-users-on-column-user-name"
+      author: "megaeater42"
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: user_name
+            constraintName: uc_users_username
+            tableName: users
+  - changeSet:
+      id: "add-uc-for-table-users-on-column-user-state-id"
+      author: "megaeater42"
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: user_state_id
+            constraintName: uc_users_user_state
+            tableName: users

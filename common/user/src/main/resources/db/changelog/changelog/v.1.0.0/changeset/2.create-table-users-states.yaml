@@ -1,0 +1,48 @@
+databaseChangeLog:
+  - changeSet:
+      id: "create-table-users-states"
+      author: "megaeater42"
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_users_states
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: chat_id
+                  type: BIGINT
+              - column:
+                  name: value
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_id
+                  type: BIGINT
+            tableName: users_states
+  - changeSet:
+      id: "add-uc-for-table-users-states-on-column-chat-id"
+      author: "megaeater42"
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: chat_id
+            constraintName: uc_users_states_chat
+            tableName: users_states
+  - changeSet:
+      id: "add-uc-for-table-users-states-on-column-user-id"
+      author: "megaeater42"
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: user_id
+            constraintName: uc_users_states_user
+            tableName: users_states
