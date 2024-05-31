@@ -1,0 +1,41 @@
+server:
+  port: 0
+  forward-headers-strategy: framework
+
+spring:
+  security:
+    user:
+      name: telegram-bot-service
+      password: passw0rd
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tg-db
+    username:
+    password: passw0rd
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    generate-ddl: true
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.uuid}
+    prefer-ip-address: true
+    hostname: localhost
+  client:
+    registry-fetch-interval-seconds: 3
+    instance-info-replication-interval-seconds: 3
+    service-url:
+      defaultZone: "http://localhost:8761/eureka/"
+
+bot:
+  username:
+  token:
+
+services:
+  nasa-api-service:
+    username: nasa-api-service-user
+    password: passw0rd

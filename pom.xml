@@ -14,6 +14,7 @@
         <module>eureka-discovery-server</module>
         <module>common</module>
         <module>nasa-api-service</module>
+        <module>telegram-bot-service</module>
     </modules>
 
     <properties>
