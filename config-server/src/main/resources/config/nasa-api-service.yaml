@@ -1,0 +1,27 @@
+server:
+  port: 0
+  forward-headers-strategy: framework
+
+spring:
+  security:
+    user:
+      name: nasa-api-service-user
+      password: "{noop}passw0rd"
+      roles:
+        - SERVICE
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.uuid}
+    hostname: localhost
+  client:
+    registry-fetch-interval-seconds: 3
+    instance-info-replication-interval-seconds: 3
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka
+
+springdoc:
+  version: "@springdoc.version@"
+  override-with-generic-response: false
+  cache:
+    disabled: true
