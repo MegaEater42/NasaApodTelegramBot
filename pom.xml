@@ -15,6 +15,7 @@
         <module>common</module>
         <module>nasa-api-service</module>
         <module>telegram-bot-service</module>
+        <module>api-gateway</module>
     </modules>
 
     <properties>

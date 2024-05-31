@@ -1,0 +1,39 @@
+server:
+  port: 8765
+  forward-headers-strategy: framework
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: nasa-api-service
+          uri: lb://nasa-api-service
+          predicates:
+            - Path=/nasa-api-service/**
+          filters:
+            - RewritePath=/nasa-api-service/(?<path>.*), /$\{path}
+        - id: openapi
+          uri: http://localhost:${server.port}
+          predicates:
+            - Path=/v3/api-docs/**
+          filters:
+            - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
+
+springdoc:
+  version: "@springdoc.version@"
+  cache:
+    disabled: true
+  swagger-ui:
+    use-root-path: true
