@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>nasa-api</module>
+        <module>user</module>
     </modules>
 
     <properties>
