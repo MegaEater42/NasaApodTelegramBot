@@ -1,4 +1,4 @@
-# Spring Telegram Bot for NasaAPOD API
+# Spring Telegram Bot for using NasaAPOD API
 This Telegram bot was created as a pet-project to familiarize with Spring Boot and can be used to get the APODs for desired date/range/count(less than/or equal 100) from https://api.nasa.gov/planetary/apod.
 
 ## Technologies:
